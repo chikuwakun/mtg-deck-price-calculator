@@ -1,12 +1,12 @@
-import axios from 'axios'
-import * as cheerio from 'cheerio'
+const axios = require('axios')
+const cheerio = require('cheerio')
 
 // レート制限のためのシンプルなメモリストレージ
 // 注意: Netlify Functionsは無状態なので、本番環境では外部ストレージが必要
 let lastRequestTime = 0
 const RATE_LIMIT_MS = 60000 // 1分間に1リクエスト (updated)
 
-export const handler = async (event, context) => {
+exports.handler = async (event, context) => {
   console.log(`=== Handler called at ${new Date().toISOString()} ===`)
   console.log('Event method:', event.httpMethod)
   console.log('Event headers:', event.headers)
