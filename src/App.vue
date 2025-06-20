@@ -52,33 +52,6 @@ const cardNameMapping = {
   'Forest': '森',
   'Swamp': '沼',
   
-  // よく使われるカード
-  'Lightning Bolt': '稲妻',
-  'Counterspell': '反駁',
-  'Sleight of Hand': '手練',
-  'Shivan Reef': 'シヴの浅瀬',
-  'Black Lotus': 'ブラック・ロータス',
-  'Time Walk': 'タイム・ウォーク',
-  'Ancestral Recall': '先祖の記憶',
-  'Mystical Tutor': 'ミスティカル・チューター',
-  'Force of Will': '意志の力',
-  'Brainstorm': 'ブレインストーム',
-  'Swords to Plowshares': '剣を鍬に',
-  'Path to Exile': '流刑への道',
-  'Giant Growth': '巨大化',
-  'Dark Ritual': '暗黒の儀式',
-  'Sol Ring': 'ゾル・リング',
-  'Mana Crypt': 'マナの墓所',
-  'Scalding Tarn': '沸騰する小湖',
-  'Polluted Delta': '汚染された三角州',
-  'Flooded Strand': '溢れかえる岸辺',
-  'Windswept Heath': '吹きさらしの荒野',
-  'Bloodstained Mire': '血染めのぬかるみ',
-  'Wooded Foothills': '樹木茂る山麓',
-  'Arid Mesa': '乾燥台地',
-  'Marsh Flats': '湿地の干潟',
-  'Verdant Catacombs': '新緑の地下墓地',
-  'Misty Rainforest': '霧深い雨林'
 }
 
 // カード価格を取得する関数
@@ -291,8 +264,8 @@ function clearInput() {
     <!-- Header -->
     <header class="bg-white shadow-sm border-b border-gray-200">
       <div class="max-w-4xl mx-auto px-4 py-6">
-        <h1 class="text-3xl font-bold text-gray-900 text-center">🎴 MTG Deck Pricer</h1>
-        <p class="text-gray-600 text-center mt-2">Magic: The Gatheringデッキの価格を計算します</p>
+        <h1 class="text-3xl font-bold text-gray-900 text-center"> MTG Deck Pricer</h1>
+        <p class="text-gray-600 text-center mt-2">Magic: The Gatheringのデッキの価格を計算します</p>
       </div>
     </header>
 
