@@ -173,8 +173,8 @@ async function calculatePrices() {
   
   console.log(`Starting price calculation for ${deck.length} cards`)
   
-  // 1分間でリクエストを分散（最低3秒間隔）
-  const requestInterval = Math.max(60000 / deck.length, 3000)
+  // レート制限に合わせて61秒間隔で処理（安全マージン付き）
+  const requestInterval = 61000
   console.log(`Request interval: ${requestInterval}ms`)
   
   for (let i = 0; i < deck.length; i++) {

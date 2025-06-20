@@ -91,21 +91,15 @@ exports.handler = async (event, context) => {
       }
     }
     
-    // レート制限チェック（簡易版）
+    // レート制限チェック（簡易版）- より寛容な設定
     const now = Date.now()
     console.log(`Current time: ${now}, Last request: ${lastRequestTime}`)
     
     if (now - lastRequestTime < RATE_LIMIT_MS) {
       const waitTime = RATE_LIMIT_MS - (now - lastRequestTime)
       console.log(`Rate limit hit, wait time: ${waitTime}ms`)
-      return {
-        statusCode: 429,
-        headers,
-        body: JSON.stringify({ 
-          error: 'Rate limit exceeded',
-          waitTime: Math.ceil(waitTime / 1000)
-        })
-      }
+      // レート制限エラーではなく、警告付きで処理続行
+      console.log('Warning: Request within rate limit, but processing anyway for development')
     }
     
     lastRequestTime = now
