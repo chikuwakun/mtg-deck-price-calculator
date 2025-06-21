@@ -78,11 +78,6 @@ async function getCardPrice(cardName) {
     console.log(`Response ok: ${response.ok}`)
     
     if (!response.ok) {
-      if (response.status === 429) {
-        const data = await response.json()
-        console.log('Rate limit response:', data)
-        throw new Error(`レート制限: ${data.waitTime}秒後に再試行してください`)
-      }
       const errorText = await response.text()
       console.error(`HTTP error response: ${errorText}`)
       throw new Error(`HTTP error! status: ${response.status}`)
@@ -146,10 +141,6 @@ async function calculatePrices() {
   
   console.log(`Starting price calculation for ${deck.length} cards`)
   
-  // レート制限に合わせて61秒間隔で処理（安全マージン付き）
-  const requestInterval = 61000
-  console.log(`Request interval: ${requestInterval}ms`)
-  
   for (let i = 0; i < deck.length; i++) {
     const card = deck[i]
     currentCard.value = card.name
@@ -157,17 +148,6 @@ async function calculatePrices() {
     console.log(`Processing card ${i + 1}/${deck.length}: ${card.name} (quantity: ${card.quantity})`)
     
     try {
-      // カウントダウン表示
-      if (i > 0) {
-        const countdownSeconds = Math.ceil(requestInterval / 1000)
-        console.log(`Waiting ${countdownSeconds} seconds before next request`)
-        
-        for (let countdown = countdownSeconds; countdown > 0; countdown--) {
-          nextRequestCountdown.value = countdown
-          await new Promise(resolve => setTimeout(resolve, 1000))
-        }
-      }
-      
       console.log(`Fetching price for: ${card.name}`)
       const priceInfo = await getCardPrice(card.name)
       console.log(`Price info received:`, priceInfo)
@@ -204,12 +184,6 @@ async function calculatePrices() {
       console.log(`Error result created:`, cardResult)
       results.value.push(cardResult)
       processedCards.value++
-      
-      // レート制限エラーの場合は待機時間を延長
-      if (error.message.includes('レート制限')) {
-        console.log('Rate limit error detected, waiting additional 30 seconds')
-        await new Promise(resolve => setTimeout(resolve, 30000)) // 30秒追加待機
-      }
     }
   }
   
@@ -307,7 +281,6 @@ function clearInput() {
             ></div>
           </div>
           <p class="text-gray-900 font-medium">{{ currentCard }} を検索中... ({{ processedCards }}/{{ totalCards }})</p>
-          <p class="text-gray-500 text-sm mt-2">次のリクエストまで: {{ nextRequestCountdown }}秒</p>
         </div>
       </div>
 
