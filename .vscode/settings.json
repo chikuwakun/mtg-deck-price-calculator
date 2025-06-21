@@ -1,0 +1,25 @@
+{
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "git.enableStatusBarSync": true,
+  "git.suggestSmartCommit": false,
+  "scm.defaultViewMode": "tree",
+  "scm.alwaysShowRepositories": true,
+  "explorer.excludeGitIgnore": false,
+  "files.exclude": {
+    "**/.git": false
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true
+  },
+  "vue.complete.casing.tags": "kebab",
+  "vue.complete.casing.props": "camel",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  }
+}

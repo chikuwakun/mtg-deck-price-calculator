@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "vue.complete.casing.tags": "kebab",
+    "vue.complete.casing.props": "camel"
+  },
+  "extensions": {
+    "recommendations": [
+      "Vue.volar",
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss",
+      "ms-vscode.vscode-json",
+      "EditorConfig.EditorConfig"
+    ]
+  }
+}
